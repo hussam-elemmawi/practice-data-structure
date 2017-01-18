@@ -60,7 +60,7 @@ int h_ll_size(H_linked_list *h_ll) {
  * Returns true(1) if H_linked_list is empty
  */
 int h_ll_is_empty(H_linked_list *h_ll) {
-  return h_ll->head->next == 0 ? 1 : 0;
+  return h_ll->head == 0 ? 1 : 0;
 }
 
 /**
@@ -104,6 +104,36 @@ void h_ll_print(H_linked_list *h_ll) {
   }
 }
 
+/**
+ * Push an item to the back of the H_linked_list
+ */
+void h_ll_push_back(H_linked_list *h_ll, int item) {
+
+  Node *new_node = malloc(sizeof(Node));
+  new_node->next = 0;
+  new_node->data = item;
+
+  if (h_ll->size == 0) {
+    h_ll->head = new_node;
+    new_node->data = item;
+  } else {
+    Node *current = h_ll->head;
+    int size = h_ll->size;
+    int counter = 1;
+
+    while (counter < size) {
+      counter++;
+      current = current->next;
+    }
+
+    current->next = new_node;
+    new_node->data = item;
+
+  }
+
+  h_ll->size++;
+}
+
 //////////////// tests ////////////////
 
 /**
@@ -112,6 +142,8 @@ void h_ll_print(H_linked_list *h_ll) {
 void run_all_tests() {
   test_size();
   test_value_at();
+  test_is_empty();
+  test_push_back();
 }
 
 void test_size() {
@@ -143,13 +175,49 @@ void test_value_at() {
 
   h_ll_push_front(h_ll, 5);
   assert(h_ll_value_at(h_ll, 0) == 5);
-//  h_ll_print(h_ll);
-
 
   h_ll_push_front(h_ll, 10);
   assert(h_ll_value_at(h_ll, 0) == 10);
+  assert(h_ll_value_at(h_ll, 1) == 5);
+
   h_ll_print(h_ll);
 
   h_ll_destroy(h_ll);
   printf("\n");
 }
+
+void test_is_empty() {
+  printf("***** test_is_empty *****\n");
+
+  H_linked_list *h_ll = h_ll_create_new();
+
+  assert(h_ll_is_empty(h_ll) == 1);
+
+  h_ll_push_front(h_ll, 5);
+  assert(h_ll_is_empty(h_ll) == 0);
+
+  h_ll_destroy(h_ll);
+  printf("\n");
+}
+
+void test_push_back() {
+  printf("***** test_push_back *****\n");
+
+  H_linked_list *h_ll = h_ll_create_new();
+
+  h_ll_push_back(h_ll, 5);
+  assert(h_ll_value_at(h_ll, 0) == 5);
+
+  h_ll_push_back(h_ll, 10);
+  assert(h_ll_value_at(h_ll, 0) == 5);
+  assert(h_ll_value_at(h_ll, 1) == 10);
+
+  h_ll_push_back(h_ll, 20);
+  assert(h_ll_value_at(h_ll, 2) == 20);
+
+  h_ll_print(h_ll);
+
+  h_ll_destroy(h_ll);
+  printf("\n");
+}
+

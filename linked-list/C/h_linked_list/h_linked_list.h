@@ -39,6 +39,9 @@ void h_ll_push_front(H_linked_list *h_ll, int item);
 // Prints the H_linked_list
 void h_ll_print(H_linked_list *h_ll);
 
+// Push an item to the back of the H_linked_list
+void h_ll_push_back(H_linked_list *h_ll, int item);
+
 
 //////////////// tests ////////////////
 
@@ -50,5 +53,11 @@ void test_size();
 
 // Test value at
 void test_value_at();
+
+// Test is the H_linked_list empty
+void test_is_empty();
+
+// Test push back
+void test_push_back();
 
 #endif //H_LINKED_LIST
