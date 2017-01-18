@@ -33,15 +33,32 @@ int h_ll_is_empty(H_linked_list *h_ll);
 // Returns the value at specified index
 int h_ll_value_at(H_linked_list *h_ll, int index);
 
-// Push an item to the front of the H_linked_list (right after the head)
+// Push an item to the front(start) of the H_linked_list (right after the head)
 void h_ll_push_front(H_linked_list *h_ll, int item);
 
 // Prints the H_linked_list
 void h_ll_print(H_linked_list *h_ll);
 
-// Push an item to the back of the H_linked_list
+// Push an item to the back(end) of the H_linked_list
 void h_ll_push_back(H_linked_list *h_ll, int item);
 
+// Pop an item from the front(start) of H_linked_list
+int h_ll_pop_front(H_linked_list *h_ll);
+
+// Return the value on the front(start) of H_linked_list
+int h_ll_front();
+
+// Return the value on the back(end) of H_linked_list
+int h_ll_back();
+
+// Insert value at index
+void h_ll_insert(H_linked_list *h_ll, int index, int value);
+
+// Erase value at index
+void h_ll_erase(H_linked_list *h_ll, int index);
+
+// Return value n from back(end)
+int h_ll_value_at_from_back(H_linked_list *h_ll, int indexFromBack);
 
 //////////////// tests ////////////////
 
@@ -59,5 +76,26 @@ void test_is_empty();
 
 // Test push back
 void test_push_back();
+
+// Test pop front
+void test_pop_front();
+
+// Test pop back
+void test_pop_back();
+
+// Test get front item
+void test_front();
+
+// Test get back item
+void test_back();
+
+// Test insertion
+void test_insert();
+
+// Test erase
+void test_erase();
+
+// Test returning value n from back(end)
+void test_value_from_back();
 
 #endif //H_LINKED_LIST
