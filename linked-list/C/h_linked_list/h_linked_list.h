@@ -60,6 +60,12 @@ void h_ll_erase(H_linked_list *h_ll, int index);
 // Return value n from back(end)
 int h_ll_value_at_from_back(H_linked_list *h_ll, int indexFromBack);
 
+// Find and remove an item
+void h_ll_remove(H_linked_list *h_ll, int value);
+
+// Reverse H_linked_list
+void h_ll_reverse(H_linked_list *h_ll);
+
 //////////////// tests ////////////////
 
 // Run all tests
@@ -97,5 +103,11 @@ void test_erase();
 
 // Test returning value n from back(end)
 void test_value_from_back();
+
+// Test remove value
+void test_remove();
+
+// Test reverse H_linked_list
+void test_reverse();
 
 #endif //H_LINKED_LIST

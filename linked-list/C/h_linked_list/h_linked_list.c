@@ -264,6 +264,49 @@ int h_ll_value_at_from_back(H_linked_list *h_ll, int indexFromBack) {
   return h_ll_value_at(h_ll, h_ll->size - indexFromBack);
 }
 
+/**
+ * Find and remove an item
+ */
+void h_ll_remove(H_linked_list *h_ll, int value) {
+
+  int size = h_ll->size;
+  if (size == 0) return;
+
+  Node *to_remove = h_ll->head;
+
+  int counter = 0;
+
+  while (counter < size) {
+    if (to_remove->data == value) {
+      h_ll_erase(h_ll, counter);
+      break;
+    } else {
+      to_remove = to_remove->next;
+    }
+    counter++;
+  }
+}
+
+/**
+ * Reverse H_linked_list
+ */
+void h_ll_reverse(H_linked_list *h_ll) {
+
+  if (h_ll->size == 0 || h_ll->size == 1) return;
+
+  Node *previous = 0;
+  Node *current = h_ll->head;
+  Node *next = 0;
+
+  while (current) {
+    next = current->next;
+    current->next = previous;
+    previous = current;
+    current = next;
+  }
+
+  h_ll->head = previous;
+}
 
 //////////////// tests ////////////////
 
@@ -281,7 +324,9 @@ void run_all_tests() {
 //  test_back();
 //  test_insert();
 //  test_erase();
-  test_value_from_back();
+//  test_value_from_back();
+//  test_remove();
+  test_reverse();
 }
 
 void test_size() {
@@ -511,6 +556,47 @@ void test_value_from_back() {
   assert(h_ll_value_at_from_back(h_ll, 2) == 15);
 
   h_ll_print(h_ll);
+  h_ll_destroy(h_ll);
+  printf("\n");
+}
+
+void test_remove() {
+  printf("***** test_remove *****\n");
+  H_linked_list *h_ll = h_ll_create_new();
+
+  h_ll_push_back(h_ll, 5);
+  h_ll_push_back(h_ll, 10);
+  h_ll_push_back(h_ll, 5);
+  h_ll_push_back(h_ll, 20);
+
+  h_ll_remove(h_ll, 5);
+  assert(h_ll->size == 3);
+  assert(h_ll_value_at(h_ll, 0) == 10);
+
+  h_ll_print(h_ll);
+  printf("\n");
+
+  h_ll_destroy(h_ll);
+  printf("\n");
+}
+
+void test_reverse() {
+  printf("***** test_reverse *****\n");
+  H_linked_list *h_ll = h_ll_create_new();
+
+  h_ll_push_back(h_ll, 5);
+  h_ll_push_back(h_ll, 10);
+  h_ll_push_back(h_ll, 15);
+  h_ll_push_back(h_ll, 20);
+
+  h_ll_print(h_ll);
+  printf("\n");
+
+  h_ll_reverse(h_ll);
+
+  h_ll_print(h_ll);
+  printf("\n");
+
   h_ll_destroy(h_ll);
   printf("\n");
 }
