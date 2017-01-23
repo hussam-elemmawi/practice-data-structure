@@ -5,6 +5,13 @@
 #ifndef LINKEDLIST_TESTS_H
 #define LINKEDLIST_TESTS_H
 
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[01m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+
+
+void print_passed();
+
 // Run all tests
 void run_all_tests();
 
