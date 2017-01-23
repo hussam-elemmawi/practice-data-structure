@@ -4,7 +4,6 @@
 
 #include "tests.h"
 
-int tests_number = 13;
 int passed_test = 0;
 
 /**
@@ -60,13 +59,9 @@ void test_size() {
   size = ll_size(ll);
   assert(size == 0);
 
-//  ll_print(ll);
-
   ll_push_front(ll, 5);
   size = ll_size(ll);
   assert(size == 1);
-
-//  ll_print(ll);
 
   ll_destroy(ll);
   print_passed("test_size");
@@ -75,16 +70,12 @@ void test_size() {
 void test_value_at() {
   linked_list *ll = ll_create_new();
 
-//  ll_print(ll);
-
   ll_push_front(ll, 5);
   assert(ll_value_at(ll, 0) == 5);
 
   ll_push_front(ll, 10);
   assert(ll_value_at(ll, 0) == 10);
   assert(ll_value_at(ll, 1) == 5);
-
-//  ll_print(ll);
 
   ll_destroy(ll);
   print_passed("test_value_at");
@@ -115,8 +106,6 @@ void test_push_back() {
   ll_push_back(ll, 20);
   assert(ll_value_at(ll, 2) == 20);
 
-//  ll_print(ll);
-
   ll_destroy(ll);
   print_passed("test_push_back");
 }
@@ -131,8 +120,6 @@ void test_pop_front() {
   assert(ll_pop_front(ll) == 5);
   assert(ll_pop_front(ll) == 10);
 
-//  ll_print(ll);
-
   ll_destroy(ll);
   print_passed("test_pop_front");
 }
@@ -144,12 +131,8 @@ void test_pop_back() {
   ll_push_back(ll, 10);
   ll_push_back(ll, 20);
 
-//  ll_print(ll);
-
   assert(ll_pop_back(ll) == 20);
   assert(ll_pop_back(ll) == 10);
-
-//  ll_print(ll);
 
   ll_destroy(ll);
   print_passed("test_pop_back");
@@ -167,7 +150,6 @@ void test_front() {
   ll_push_front(ll, 1);
   assert(ll_front(ll) == 1);
 
-//  ll_print(ll);
   ll_destroy(ll);
   print_passed("test_front");
 }
@@ -184,7 +166,6 @@ void test_back() {
   ll_push_back(ll, 1);
   assert(ll_back(ll) == 1);
 
-//  ll_print(ll);
   ll_destroy(ll);
   print_passed("test_back");
 }
@@ -195,30 +176,20 @@ void test_insert() {
   ll_insert(ll, 0, 5);
   assert(ll_value_at(ll, 0) == 5);
 
-//  ll_print(ll);
-//  printf("\n");
-
   ll_insert(ll, 1, 10);
   assert(ll_value_at(ll, 0) == 5);
   assert(ll_value_at(ll, 1) == 10);
-
-//  ll_print(ll);
-//  printf("\n");
 
   ll_insert(ll, 2, 15);
   assert(ll_value_at(ll, 0) == 5);
   assert(ll_value_at(ll, 1) == 10);
   assert(ll_value_at(ll, 2) == 15);
 
-//  ll_print(ll);
-//  printf("\n");
-
   ll_insert(ll, 1, 7);
   assert(ll_value_at(ll, 0) == 5);
   assert(ll_value_at(ll, 1) == 7);
   assert(ll_value_at(ll, 3) == 15);
 
-//  ll_print(ll);
   ll_destroy(ll);
   print_passed("test_insert");
 }
@@ -229,20 +200,18 @@ void test_erase() {
   ll_push_front(ll, 5);
   ll_push_front(ll, 10);
   assert(ll_size(ll) == 2);
-//  ll_print(ll);
-//  printf("\n");
 
   ll_erase(ll, 1);
   assert(ll_size(ll) == 1);
-//  ll_print(ll);
-//  printf("\n");
 
   ll_erase(ll, 0);
   assert(ll_size(ll) == 0);
-//  ll_print(ll);
 
+  //
   ll_erase(ll, 1);
-//  ll_print(ll);
+  // Nothing erased, still size == zero
+  assert(ll_size(ll) == 0);
+
   ll_destroy(ll);
   print_passed("test_erase");
 }
@@ -250,19 +219,13 @@ void test_erase() {
 void test_value_from_back() {
   linked_list *ll = ll_create_new();
 
-//  ll_print(ll);
-
   ll_push_back(ll, 5);
   ll_push_back(ll, 10);
   ll_push_back(ll, 15);
   ll_push_back(ll, 20);
 
-//  ll_print(ll);
-//  printf("\n");
-
   assert(ll_value_at_from_back(ll, 2) == 15);
 
-//  ll_print(ll);
   ll_destroy(ll);
   print_passed("test_value_from_back");
 }
@@ -279,11 +242,7 @@ void test_remove() {
   assert(ll_size(ll) == 3);
   assert(ll_value_at(ll, 0) == 10);
 
-//  ll_print(ll);
-//  printf("\n");
-
   ll_destroy(ll);
-//  printf("\n");
   print_passed("test_remove");
 }
 
@@ -295,16 +254,9 @@ void test_reverse() {
   ll_push_back(ll, 15);
   ll_push_back(ll, 20);
 
-//  ll_print(ll);
-//  printf("\n");
-
   ll_reverse(ll);
 
-//  ll_print(ll);
-//  printf("\n");
-
   ll_destroy(ll);
-//  printf("\n");
   print_passed("test_reverse");
 }
 
@@ -318,5 +270,4 @@ print_final_result() {
     printf(" all %d tests passed", tests_number);
   else
     printf(" %d/%d tests passed", passed_test, tests_number);
-
 }

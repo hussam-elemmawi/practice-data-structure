@@ -9,8 +9,7 @@
 #define ANSI_COLOR_GREEN   "\x1b[01m"
 #define ANSI_COLOR_BLUE    "\x1b[34m"
 
-
-void print_passed();
+int tests_number = 13;
 
 // Run all tests
 void run_all_tests();
@@ -53,5 +52,8 @@ void test_remove();
 
 // Test reverse H_linked_list
 void test_reverse();
+
+// Helper function
+void print_passed();
 
 #endif //LINKEDLIST_TESTS_H
