@@ -4,4 +4,6 @@
 CMakeFiles/LinkedList.dir/main.c.o: ../linked_list.c
 CMakeFiles/LinkedList.dir/main.c.o: ../linked_list.h
 CMakeFiles/LinkedList.dir/main.c.o: ../main.c
+CMakeFiles/LinkedList.dir/main.c.o: ../tests.c
+CMakeFiles/LinkedList.dir/main.c.o: ../tests.h
 
