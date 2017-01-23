@@ -1,9 +1,9 @@
 //
-// Created by hussamelemmawi on 17/01/17.
+// Created by hussamelemmawi on 23/01/17.
 //
 
-#ifndef H_LINKED_LIST
-#define H_LINKED_LIST
+#ifndef LINKEDLIST_T_LINKED_LIST_T_H
+#define LINKEDLIST_T_LINKED_LIST_T_H
 
 typedef struct node {
     int data;
@@ -12,58 +12,58 @@ typedef struct node {
 
 typedef struct linked_list {
     struct node *head;
-    int size;
-} H_linked_list;
+    struct node *tail;
+} linked_list;
 
 // Create new H_linked_list
-H_linked_list *h_ll_create_new();
+linked_list *ll_create_new();
 
 // Check address for a pointer
 void check_address(void *p);
 
 // Destroy H_linked_list
-void h_ll_destroy(H_linked_list *h_ll);
+void ll_destroy(linked_list *ll);
 
 // Returns the size of the H_linked_list
-int h_ll_size(H_linked_list *h_ll);
+int ll_size(linked_list *ll);
 
 // Returns true(1) if H_linked_list is empty
-int h_ll_is_empty(H_linked_list *h_ll);
+int ll_is_empty(linked_list *ll);
 
 // Returns the value at specified index
-int h_ll_value_at(H_linked_list *h_ll, int index);
+int ll_value_at(linked_list *ll, int index);
 
 // Push an item to the front(start) of the H_linked_list (right after the head)
-void h_ll_push_front(H_linked_list *h_ll, int item);
+void ll_push_front(linked_list *ll, int item);
 
 // Prints the H_linked_list
-void h_ll_print(H_linked_list *h_ll);
+void ll_print(linked_list *ll);
 
 // Push an item to the back(end) of the H_linked_list
-void h_ll_push_back(H_linked_list *h_ll, int item);
+void ll_push_back(linked_list *ll, int item);
 
 // Pop an item from the front(start) of H_linked_list
-int h_ll_pop_front(H_linked_list *h_ll);
+int ll_pop_front(linked_list *ll);
 
 // Return the value on the front(start) of H_linked_list
-int h_ll_front();
+int ll_front();
 
 // Return the value on the back(end) of H_linked_list
-int h_ll_back();
+int ll_back();
 
 // Insert value at index
-void h_ll_insert(H_linked_list *h_ll, int index, int value);
+void ll_insert(linked_list *ll, int index, int value);
 
 // Erase value at index
-void h_ll_erase(H_linked_list *h_ll, int index);
+void ll_erase(linked_list *ll, int index);
 
 // Return value n from back(end)
-int h_ll_value_at_from_back(H_linked_list *h_ll, int indexFromBack);
+int ll_value_at_from_back(linked_list *ll, int indexFromBack);
 
 // Find and remove an item
-void h_ll_remove(H_linked_list *h_ll, int value);
+void ll_remove(linked_list *ll, int value);
 
 // Reverse H_linked_list
-void h_ll_reverse(H_linked_list *h_ll);
+void ll_reverse(linked_list *ll);
 
-#endif //H_LINKED_LIST
+#endif //LINKEDLIST_T_LINKED_LIST_T_H

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "linked_list_impl.c"
-#include "tests.h"
+#include "tests.c"
 
 int main() {
   run_all_tests();

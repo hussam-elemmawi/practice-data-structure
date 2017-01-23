@@ -42,10 +42,13 @@ void h_ll_destroy(H_linked_list *h_ll) {
 
   while (current) {
     next = current->next;
+
+    current = NULL;
     free(current);
     current = next;
   }
 
+  h_ll = NULL;
   free(h_ll);
 }
 
@@ -135,7 +138,6 @@ void h_ll_push_back(H_linked_list *h_ll, int item) {
 
     current->next = new_node;
     new_node->data = item;
-
   }
 
   h_ll->size++;
@@ -150,6 +152,7 @@ int h_ll_pop_front(H_linked_list *h_ll) {
   Node *nodeToPop = h_ll->head;
   h_ll->head = nodeToPop->next;
 
+  nodeToPop = NULL;
   free(nodeToPop);
   h_ll->size--;
   return value;
@@ -172,6 +175,8 @@ int h_ll_pop_back(H_linked_list *h_ll) {
   }
 
   int value = current->data;
+
+  current = NULL;
   free(current);
   h_ll->size--;
 
@@ -199,7 +204,7 @@ void h_ll_insert(H_linked_list *h_ll, int index, int value) {
 
   int size = h_ll->size;
   if (index > size || index < 0) return;
-  if (index == 0 && size == 0) h_ll_push_front(h_ll, value);
+  if (index == 0) h_ll_push_front(h_ll, value);
   else if (index == size) h_ll_push_back(h_ll, value);
   else {
 
@@ -221,6 +226,8 @@ void h_ll_insert(H_linked_list *h_ll, int index, int value) {
     next_node = previous_node->next;
     previous_node->next = new_node;
     new_node->next = next_node;
+
+    h_ll->size++;
   }
 }
 
@@ -251,6 +258,7 @@ void h_ll_erase(H_linked_list *h_ll, int index) {
     to_delete_node = previous_node->next;
     previous_node->next = next_node;
 
+    to_delete_node = NULL;
     free(to_delete_node);
     h_ll->size--;
   }
@@ -306,297 +314,4 @@ void h_ll_reverse(H_linked_list *h_ll) {
   }
 
   h_ll->head = previous;
-}
-
-//////////////// tests ////////////////
-
-/**
- * Function to run all tests at once
- */
-void run_all_tests() {
-//  test_size();
-//  test_value_at();
-//  test_is_empty();
-//  test_push_back();
-//  test_pop_front();
-//  test_pop_back();
-//  test_front();
-//  test_back();
-//  test_insert();
-//  test_erase();
-//  test_value_from_back();
-//  test_remove();
-  test_reverse();
-}
-
-void test_size() {
-  printf("***** test_size *****\n");
-  int size = 0;
-
-  H_linked_list *h_ll = h_ll_create_new();
-  size = h_ll_size(h_ll);
-  assert(size == 0);
-
-  h_ll_print(h_ll);
-
-  h_ll_push_front(h_ll, 5);
-  size = h_ll_size(h_ll);
-  assert(size == 1);
-
-  h_ll_print(h_ll);
-
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_value_at() {
-  printf("***** test_value_at *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_print(h_ll);
-
-  h_ll_push_front(h_ll, 5);
-  assert(h_ll_value_at(h_ll, 0) == 5);
-
-  h_ll_push_front(h_ll, 10);
-  assert(h_ll_value_at(h_ll, 0) == 10);
-  assert(h_ll_value_at(h_ll, 1) == 5);
-
-  h_ll_print(h_ll);
-
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_is_empty() {
-  printf("***** test_is_empty *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  assert(h_ll_is_empty(h_ll) == 1);
-
-  h_ll_push_front(h_ll, 5);
-  assert(h_ll_is_empty(h_ll) == 0);
-
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_push_back() {
-  printf("***** test_push_back *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_back(h_ll, 5);
-  assert(h_ll_value_at(h_ll, 0) == 5);
-
-  h_ll_push_back(h_ll, 10);
-  assert(h_ll_value_at(h_ll, 0) == 5);
-  assert(h_ll_value_at(h_ll, 1) == 10);
-
-  h_ll_push_back(h_ll, 20);
-  assert(h_ll_value_at(h_ll, 2) == 20);
-
-  h_ll_print(h_ll);
-
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_pop_front() {
-  printf("***** test_pop_front *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_back(h_ll, 5);
-  h_ll_push_back(h_ll, 10);
-  h_ll_push_back(h_ll, 20);
-
-  assert(h_ll_pop_front(h_ll) == 5);
-  assert(h_ll_pop_front(h_ll) == 10);
-
-  h_ll_print(h_ll);
-
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_pop_back() {
-  printf("***** test_pop_back *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_back(h_ll, 5);
-  h_ll_push_back(h_ll, 10);
-  h_ll_push_back(h_ll, 20);
-
-  assert(h_ll_pop_back(h_ll) == 20);
-  assert(h_ll_pop_back(h_ll) == 10);
-
-  h_ll_print(h_ll);
-
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_front() {
-  printf("***** test_front *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_front(h_ll, 5);
-  assert(h_ll_front(h_ll) == 5);
-
-  h_ll_push_back(h_ll, 10);
-  assert(h_ll_front(h_ll) == 5);
-
-  h_ll_push_front(h_ll, 1);
-  assert(h_ll_front(h_ll) == 1);
-
-  h_ll_print(h_ll);
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_back() {
-  printf("***** test_back *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_back(h_ll, 5);
-  assert(h_ll_back(h_ll) == 5);
-
-  h_ll_push_front(h_ll, 10);
-  assert(h_ll_back(h_ll) == 5);
-
-  h_ll_push_back(h_ll, 1);
-  assert(h_ll_back(h_ll) == 1);
-
-  h_ll_print(h_ll);
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_insert() {
-  printf("***** test_insert *****\n");
-
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_insert(h_ll, 0, 5);
-  assert(h_ll_value_at(h_ll, 0) == 5);
-
-  h_ll_insert(h_ll, 1, 10);
-  assert(h_ll_value_at(h_ll, 0) == 5);
-  assert(h_ll_value_at(h_ll, 1) == 10);
-
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_insert(h_ll, 2, 15);
-  assert(h_ll_value_at(h_ll, 0) == 5);
-  assert(h_ll_value_at(h_ll, 1) == 10);
-  assert(h_ll_value_at(h_ll, 2) == 15);
-
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_insert(h_ll, 1, 7);
-  assert(h_ll_value_at(h_ll, 0) == 5);
-  assert(h_ll_value_at(h_ll, 1) == 7);
-  assert(h_ll_value_at(h_ll, 2) == 15);
-
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_print(h_ll);
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_erase() {
-  printf("***** test_erase *****\n");
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_front(h_ll, 5);
-  h_ll_push_front(h_ll, 10);
-  assert(h_ll->size == 2);
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_erase(h_ll, 1);
-  assert(h_ll->size == 1);
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_erase(h_ll, 0);
-  assert(h_ll->size == 0);
-  h_ll_print(h_ll);
-
-  h_ll_erase(h_ll, 1);
-  h_ll_print(h_ll);
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_value_from_back() {
-  printf("***** test_value_from_back *****\n");
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_print(h_ll);
-
-  h_ll_push_back(h_ll, 5);
-  h_ll_push_back(h_ll, 10);
-  h_ll_push_back(h_ll, 15);
-  h_ll_push_back(h_ll, 20);
-
-  h_ll_print(h_ll);
-  printf("\n");
-
-  assert(h_ll_value_at_from_back(h_ll, 2) == 15);
-
-  h_ll_print(h_ll);
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_remove() {
-  printf("***** test_remove *****\n");
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_back(h_ll, 5);
-  h_ll_push_back(h_ll, 10);
-  h_ll_push_back(h_ll, 5);
-  h_ll_push_back(h_ll, 20);
-
-  h_ll_remove(h_ll, 5);
-  assert(h_ll->size == 3);
-  assert(h_ll_value_at(h_ll, 0) == 10);
-
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_destroy(h_ll);
-  printf("\n");
-}
-
-void test_reverse() {
-  printf("***** test_reverse *****\n");
-  H_linked_list *h_ll = h_ll_create_new();
-
-  h_ll_push_back(h_ll, 5);
-  h_ll_push_back(h_ll, 10);
-  h_ll_push_back(h_ll, 15);
-  h_ll_push_back(h_ll, 20);
-
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_reverse(h_ll);
-
-  h_ll_print(h_ll);
-  printf("\n");
-
-  h_ll_destroy(h_ll);
-  printf("\n");
 }
