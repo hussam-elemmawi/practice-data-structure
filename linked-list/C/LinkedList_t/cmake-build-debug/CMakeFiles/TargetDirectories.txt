@@ -1,3 +1,0 @@
-/home/hussamelemmawi/practice-data-structure/linked-list/C/LinkedList_t/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/hussamelemmawi/practice-data-structure/linked-list/C/LinkedList_t/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/hussamelemmawi/practice-data-structure/linked-list/C/LinkedList_t/cmake-build-debug/CMakeFiles/LinkedList_t.dir
