@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/main.c
+stdio.h
+-
+tests.c
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/tests.c
+
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/queue.c
+queue.h
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/queue.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/queue.h
+
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/tests.c
+tests.h
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/tests.h
+queue.c
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/queue.c
+assert.h
+-
+stdio.h
+-
+
+/home/hussamelemmawi/practice-data-structure/queue-linked-list/tests.h
+

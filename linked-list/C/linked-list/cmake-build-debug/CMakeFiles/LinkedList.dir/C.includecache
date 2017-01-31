@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/linked_list.h
+
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/linked_list_impl.c
+stdlib.h
+-
+stdio.h
+-
+assert.h
+-
+linked_list.h
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/linked_list.h
+
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/main.c
+stdio.h
+-
+linked_list_impl.c
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/linked_list_impl.c
+tests.c
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/tests.c
+
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/tests.c
+tests.h
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/tests.h
+
+/home/hussamelemmawi/practice-data-structure/linked-list/C/linked-list/tests.h
+

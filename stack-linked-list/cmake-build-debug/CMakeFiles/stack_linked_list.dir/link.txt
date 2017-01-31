@@ -1,0 +1,1 @@
+/usr/bin/cc  -g   CMakeFiles/stack_linked_list.dir/main.c.o  -o stack_linked_list 
