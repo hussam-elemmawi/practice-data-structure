@@ -9,7 +9,7 @@
 #define ANSI_COLOR_GREEN   "\x1b[01m"
 #define ANSI_COLOR_BLUE    "\x1b[34m"
 
-int tests_number = 3;
+const int tests_number = 3;
 
 // Run all tests
 void run_all_tests();

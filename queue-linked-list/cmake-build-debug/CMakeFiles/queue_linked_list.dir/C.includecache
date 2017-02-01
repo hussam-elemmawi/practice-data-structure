@@ -7,8 +7,6 @@
 #IncludeRegexTransform: 
 
 /home/hussamelemmawi/practice-data-structure/queue-linked-list/main.c
-stdio.h
--
 tests.c
 /home/hussamelemmawi/practice-data-structure/queue-linked-list/tests.c
 
