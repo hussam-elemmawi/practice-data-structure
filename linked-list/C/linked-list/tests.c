@@ -266,7 +266,6 @@ void print_passed(char str[]) {
 }
 
 print_final_result() {
-
   if (passed_test == tests_number)
     printf(" all %d tests passed", tests_number);
   else

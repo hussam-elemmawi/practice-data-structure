@@ -67,7 +67,7 @@ void stack_print(Stack *stack) {
   if (!stack_is_empty(stack)) {
     Node *current = stack->head;
     do {
-      printf("%d \t", current->data);
+      printf("%d \n", current->data);
       current = current->next;
     } while (current);
     printf("\n");
