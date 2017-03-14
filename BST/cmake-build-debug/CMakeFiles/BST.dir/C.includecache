@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/BST/binary-search-tree.c
+binary-search-tree.h
+/home/hussamelemmawi/practice-data-structure/BST/binary-search-tree.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/hussamelemmawi/practice-data-structure/BST/binary-search-tree.h
+
+/home/hussamelemmawi/practice-data-structure/BST/main.c
+stdio.h
+-
+tests.c
+/home/hussamelemmawi/practice-data-structure/BST/tests.c
+
+/home/hussamelemmawi/practice-data-structure/BST/tests.c
+tests.h
+/home/hussamelemmawi/practice-data-structure/BST/tests.h
+binary-search-tree.c
+/home/hussamelemmawi/practice-data-structure/BST/binary-search-tree.c
+assert.h
+-
+
+/home/hussamelemmawi/practice-data-structure/BST/tests.h
+

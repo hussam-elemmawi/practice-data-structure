@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/queue-array/main.c
+tests.c
+/home/hussamelemmawi/practice-data-structure/queue-array/tests.c
+
+/home/hussamelemmawi/practice-data-structure/queue-array/queue.c
+queue.h
+/home/hussamelemmawi/practice-data-structure/queue-array/queue.h
+stdlib.h
+/home/hussamelemmawi/practice-data-structure/queue-array/stdlib.h
+stdio.h
+/home/hussamelemmawi/practice-data-structure/queue-array/stdio.h
+
+/home/hussamelemmawi/practice-data-structure/queue-array/queue.h
+
+/home/hussamelemmawi/practice-data-structure/queue-array/tests.c
+tests.h
+/home/hussamelemmawi/practice-data-structure/queue-array/tests.h
+queue.c
+/home/hussamelemmawi/practice-data-structure/queue-array/queue.c
+assert.h
+-
+stdio.h
+-
+
+/home/hussamelemmawi/practice-data-structure/queue-array/tests.h
+

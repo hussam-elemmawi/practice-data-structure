@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/AVL_TREE/avl_tree.c
+avl_tree.h
+/home/hussamelemmawi/practice-data-structure/AVL_TREE/avl_tree.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/hussamelemmawi/practice-data-structure/AVL_TREE/avl_tree.h
+
+/home/hussamelemmawi/practice-data-structure/AVL_TREE/main.c
+stdio.h
+-
+avl_tree.c
+/home/hussamelemmawi/practice-data-structure/AVL_TREE/avl_tree.c
+
