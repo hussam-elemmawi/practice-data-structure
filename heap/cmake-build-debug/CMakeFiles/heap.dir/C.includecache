@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/heap/main.c
+stdio.h
+-
+max-heap.c
+/home/hussamelemmawi/practice-data-structure/heap/max-heap.c
+
+/home/hussamelemmawi/practice-data-structure/heap/max-heap.c
+max-heap.h
+/home/hussamelemmawi/practice-data-structure/heap/max-heap.h
+stdlib.h
+-
+
+/home/hussamelemmawi/practice-data-structure/heap/max-heap.h
+
