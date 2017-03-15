@@ -141,3 +141,14 @@ void max_heapify(MaxHeap *maxHeap, int nodeIndex) {
     }
   }
 }
+
+int get_max(MaxHeap *maxHeap) {
+  return maxHeap->elements[1];
+}
+
+int extract_max(MaxHeap *maxHeap) {
+  int ext_max = maxHeap->elements[1];
+  delete(maxHeap, ext_max);
+  return ext_max;
+}
+

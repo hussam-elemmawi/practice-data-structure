@@ -26,4 +26,8 @@ MaxHeap *heapify(int *arr, int arr_size);
 // Maintain max heap property
 void max_heapify(MaxHeap *maxHeap, int nodeIndex);
 
+int get_max(MaxHeap *maxHeap);
+
+int extract_max(MaxHeap *maxHeap);
+
 #endif //HEAP_MAX_HEAP_H

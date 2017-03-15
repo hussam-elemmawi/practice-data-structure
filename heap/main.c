@@ -26,5 +26,9 @@ int main() {
   print_heap(maxHeap, 0);
   printf("\n");
 
+  printf("max: %d\n", get_max(maxHeap));
+  printf("extract_max: %d\n", extract_max(maxHeap));
+  printf("max: %d\n", get_max(maxHeap));
+
   return 0;
 }
