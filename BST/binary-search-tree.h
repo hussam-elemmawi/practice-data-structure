@@ -23,11 +23,13 @@ void destroy_node(Node *node);
 
 int get_node_count(Node *node);
 
-int print_preOrder(Node *node);
+void preOrder(Node *node);
 
-int print_inOrder(Node *node);
+void inOrder(Node *node);
 
-int print_postOrder(Node *node);
+void postOrder(Node *node);
+
+void levelOrder(Node *node);
 
 Node *find(Node *node, int value);
 

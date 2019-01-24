@@ -32,26 +32,26 @@ int get_node_count(Node *node) {
   return 1 + get_node_count(node->left) + get_node_count(node->right);
 }
 
-int print_preOrder(Node *node) {
+void preOrder(Node *node) {
   if (node != NULL) {
     printf("%d", node->value);
-    print_preOrder(node->left);
-    print_preOrder(node->right);
+    preOrder(node->left);
+    preOrder(node->right);
   }
 }
 
-int print_inOrder(Node *node) {
+void inOrder(Node *node) {
   if (node != NULL) {
-    print_inOrder(node->left);
+    inOrder(node->left);
     printf("%d", node->value);
-    print_inOrder(node->right);
+    inOrder(node->right);
   }
 }
 
-int print_postOrder(Node *node) {
+void postOrder(Node *node) {
   if (node != NULL) {
-    print_postOrder(node->left);
-    print_postOrder(node->right);
+    postOrder(node->left);
+    postOrder(node->right);
     printf("%d", node->value);
   }
 }
@@ -153,7 +153,7 @@ Node *get_successor(Node *node) {
     Node *successor = NULL;
     Node *ancestor = node;
 
-    while (ancestor->value != node->value) {
+    while (ancestor != NULL) {
       if (ancestor->value < node->value) {
         successor = ancestor;
         ancestor = ancestor->left;

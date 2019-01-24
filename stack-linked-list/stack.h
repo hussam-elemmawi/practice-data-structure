@@ -5,13 +5,13 @@
 #ifndef STACK_LINKED_LIST_STACK_H
 #define STACK_LINKED_LIST_STACK_H
 
-typedef struct node {
+typedef struct stack_node {
     int data;
-    struct node *next;
-} Node;
+    struct stack_node *next;
+} StackNode;
 
 typedef struct stack {
-    Node *head;
+    StackNode *head;
 } Stack;
 
 Stack *stack_create();
@@ -26,7 +26,7 @@ int stack_top(Stack *stack);
 
 int stack_is_empty();
 
-void check_address(void *p);
+void check_address_for_stack_node(void *p);
 
 void stack_print(Stack *stack);
 

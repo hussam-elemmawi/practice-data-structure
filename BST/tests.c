@@ -59,7 +59,7 @@ int test_print_inOrder() {
 
   insert(bst->root, 1);
   insert(bst->root, 3);
-  print_inOrder(bst->root);
+  inOrder(bst->root);
   printf("\n");
 
   destroy_node(bst->root);
@@ -177,7 +177,7 @@ void test_delete() {
 
   delete(bst->root, 5);
   assert(find(bst->root, 5) == NULL);
-  print_inOrder(bst->root);
+  inOrder(bst->root);
   printf("\n");
 
   destroy_node(bst->root);
@@ -198,7 +198,7 @@ void test_get_successor() {
   insert(bst->root, 8);
   insert(bst->root, 9);
 
-  print_inOrder(bst->root);
+  inOrder(bst->root);
   printf("\n");
 
   assert(get_successor(bst->root)->value == 6);

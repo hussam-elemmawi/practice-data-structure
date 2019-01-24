@@ -8,14 +8,14 @@
 
 Stack *stack_create() {
   Stack *new_stack = malloc(sizeof(Stack));
-  check_address(new_stack);
+  check_address_for_stack_node(new_stack);
   new_stack->head = NULL;
   return new_stack;
 }
 
 void stack_destroy(Stack *stack) {
   if (!stack_is_empty(stack)) {
-    Node *current = stack->head;
+    StackNode *current = stack->head;
     do {
       stack->head = current->next;
       current = NULL;
@@ -26,8 +26,8 @@ void stack_destroy(Stack *stack) {
 }
 
 void stack_push(Stack *stack, int item) {
-  Node *new_node = malloc(sizeof(Node));
-  check_address(new_node);
+  StackNode *new_node = malloc(sizeof(StackNode));
+  check_address_for_stack_node(new_node);
 
   new_node->data = item;
   new_node->next = stack->head;
@@ -46,7 +46,7 @@ int stack_top(Stack *stack) {
   if (!stack_is_empty(stack))
     return stack->head->data;
   else {
-    printf("Stack is empty");
+    printf("Stack is empty\n");
     return -1;
   }
 }
@@ -55,9 +55,9 @@ int stack_is_empty(Stack *stack) {
   return stack->head == NULL;
 }
 
-void check_address(void *p) {
+void check_address_for_stack_node(void *p) {
   if (p == NULL) {
-    printf("Address not found");
+    printf("Address not found\n");
     exit(EXIT_FAILURE);
   }
 }
@@ -65,7 +65,7 @@ void check_address(void *p) {
 void stack_print(Stack *stack) {
 
   if (!stack_is_empty(stack)) {
-    Node *current = stack->head;
+    StackNode *current = stack->head;
     do {
       printf("%d \n", current->data);
       current = current->next;

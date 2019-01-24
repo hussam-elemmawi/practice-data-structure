@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/hash-table/hash_table.c
+hash_table.h
+/home/hussamelemmawi/practice-data-structure/hash-table/hash_table.h
+
+/home/hussamelemmawi/practice-data-structure/hash-table/hash_table.h
+stdbool.h
+-
+stdlib.h
+-
+assert.h
+-
+stdio.h
+-
+string.h
+-
+
+/home/hussamelemmawi/practice-data-structure/hash-table/main.c
+test.c
+/home/hussamelemmawi/practice-data-structure/hash-table/test.c
+
+/home/hussamelemmawi/practice-data-structure/hash-table/test.c
+test.h
+/home/hussamelemmawi/practice-data-structure/hash-table/test.h
+hash_table.c
+/home/hussamelemmawi/practice-data-structure/hash-table/hash_table.c
+
+/home/hussamelemmawi/practice-data-structure/hash-table/test.h
+
