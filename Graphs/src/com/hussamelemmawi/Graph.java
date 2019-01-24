@@ -1,6 +1,7 @@
 package com.hussamelemmawi;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by hussamelemmawi on 14/08/17.
@@ -8,13 +9,13 @@ import java.util.ArrayList;
 
 abstract class Graph {
   private final GraphType graphType;
-  protected ArrayList<Vertex> vertices;
+  protected HashSet<Vertex> vertices;
   int edgesCount;
   private int clock;
 
   Graph(GraphType graphType) {
     this.graphType = graphType;
-    vertices = new ArrayList<>();
+    vertices = new HashSet<>();
     edgesCount = 0;
     clock = 0;
   }
@@ -23,11 +24,15 @@ abstract class Graph {
 
   abstract void connectVertices(Vertex src, Vertex dest);
 
+  abstract void connectVertices(Object srcValue, Object destValue);
+
   abstract void connectVertices(int src, int dest);
 
-  abstract void disConnectVertices(Vertex src, Vertex dest);
+  abstract void disconnectVertices(Vertex src, Vertex dest);
 
-  abstract void disConnectVertices(int src, int dest);
+  abstract void disconnectVertices(int src, int dest);
+
+  abstract void printEdgesCount();
 
   void DFS() {
     for (Vertex v : vertices) v.setVisited(false);
@@ -86,16 +91,29 @@ abstract class Graph {
     }
   }
 
+  void printGraphEdges() {
+    for (Vertex v : vertices) {
+      for (Vertex u: v.getAdjacentList()) {
+        System.out.println(v.getValue() + " -> " + u.getValue());
+      }
+    }
+  }
+
   void printGraphDetailed() {
     for (Vertex v : vertices) {
       System.out.println(
-        v.getValue() + ": pre: " + v.getPreVisit() + " post: " + v.getPostVisit()
+        v.getValue() + ", pre: " + v.getPreVisit() + ", post: " + v.getPostVisit()
       );
     }
   }
 
-  void printEdgesCount() {
-    System.out.println("Graph has: " + edgesCount / 2 + " (s)");
+  Vertex getVertex(Graph g, Object value) {
+    for (Vertex v: g.vertices) {
+      if (v.getValue().equals(value)) {
+        return v;
+      }
+    }
+    return null;
   }
 
   void println() {

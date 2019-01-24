@@ -10,8 +10,8 @@ public class UndirectedGraph extends Graph {
 
   private ArrayList<ArrayList<Vertex>> CCs;
 
-  public UndirectedGraph(GraphType graphType) {
-    super(graphType);
+  public UndirectedGraph() {
+    super(GraphType.UNDIRECTED);
     this.CCs = new ArrayList<>();
   }
 
@@ -33,14 +33,22 @@ public class UndirectedGraph extends Graph {
 
   @Override
   void connectVertices(int src, int dest) {
-    if (src != dest) {
-      if (vertices.get(src).connectToVertex(vertices.get(dest))) ++edgesCount;
-      if (vertices.get(dest).connectToVertex(vertices.get(src))) ++edgesCount;
+    if (src != dest && src >= 0 && src < vertices.size() && dest >= 0 && dest < vertices.size()) {
+      if (getVertex(this, src).connectToVertex(getVertex(this, dest))) ++edgesCount;
+      if (getVertex(this, dest).connectToVertex(getVertex(this, src))) ++edgesCount;
     }
   }
 
   @Override
-  void disConnectVertices(Vertex src, Vertex dest) {
+  void connectVertices(Object srcValue, Object destValue) {
+    if (srcValue != destValue && srcValue != null && destValue != null) {
+      if (getVertex(this, srcValue).connectToVertex(getVertex(this, destValue))) ++edgesCount;
+      if (getVertex(this, srcValue).connectToVertex(getVertex(this, destValue))) ++edgesCount;
+    }
+  }
+
+  @Override
+  void disconnectVertices(Vertex src, Vertex dest) {
     if (!src.equals(dest))
       for (Vertex v : vertices) {
         if (v.equals(src) && v.disconnectFromVertex(dest))
@@ -51,11 +59,25 @@ public class UndirectedGraph extends Graph {
   }
 
   @Override
-  void disConnectVertices(int src, int dest) {
-    if (src != dest) {
-      if (vertices.get(src).disconnectFromVertex(vertices.get(dest))) --edgesCount;
-      if (vertices.get(dest).disconnectFromVertex(vertices.get(src))) --edgesCount;
+  void disconnectVertices(int src, int dest) {
+    if (src != dest && src >= 0 && src < vertices.size() && dest >= 0 && dest < vertices.size()) {
+      if (getVertex(this, src).disconnectFromVertex(getVertex(this, dest))) --edgesCount;
+      if (getVertex(this, dest).disconnectFromVertex(getVertex(this, src))) --edgesCount;
     }
+  }
+
+  @Override
+  void printEdgesCount() {
+    System.out.println("Graph has: " + edgesCount / 2 + " (s)");
+  }
+
+  @Override
+  protected UndirectedGraph clone() {
+    UndirectedGraph graph = new UndirectedGraph();
+    for (Vertex v : vertices) {
+      graph.appendVertex(v);
+    }
+    return graph;
   }
 
   void CCs() {

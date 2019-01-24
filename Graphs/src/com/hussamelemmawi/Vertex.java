@@ -1,6 +1,8 @@
 package com.hussamelemmawi;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by hussamelemmawi on 14/08/17.
@@ -13,11 +15,13 @@ public class Vertex {
   private int CC_num;
   private int preVisit;
   private int postVisit;
+  private int incomingEdgesCount;
 
   Vertex(Object value) {
     this.value = value;
     adjacentList = new ArrayList<>();
     visited = false;
+    incomingEdgesCount = 0;
   }
 
   boolean connectToVertex(Vertex vertex) {
@@ -79,5 +83,26 @@ public class Vertex {
   void postVisit(Graph g) {
     g.tickClock();
     postVisit = g.getClock();
+  }
+
+  void increamentIncomingEdgesCount() {
+    ++incomingEdgesCount;
+  }
+
+  void decreamentIncomingEdgesCount() {
+    --incomingEdgesCount;
+  }
+
+  boolean isSink() {
+    return incomingEdgesCount == 0;
+  }
+
+  boolean isDisconnectedFromGraph() {
+    return isSink() && adjacentList.isEmpty();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return this.value == ((Vertex) obj).value;
   }
 }
