@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hussamelemmawi/practice-data-structure/array/C/resizeable_array/main.c
+stdio.h
+-
+resizeable_array.c
+/home/hussamelemmawi/practice-data-structure/array/C/resizeable_array/resizeable_array.c
+
+/home/hussamelemmawi/practice-data-structure/array/C/resizeable_array/resizeable_array.c
+stdlib.h
+-
+stdio.h
+-
+assert.h
+-
+resizeable_array.h
+/home/hussamelemmawi/practice-data-structure/array/C/resizeable_array/resizeable_array.h
+
+/home/hussamelemmawi/practice-data-structure/array/C/resizeable_array/resizeable_array.h
+

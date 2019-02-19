@@ -1,0 +1,1 @@
+/usr/bin/cc  -g   CMakeFiles/resizeable_array.dir/main.c.o  -o resizeable_array 
