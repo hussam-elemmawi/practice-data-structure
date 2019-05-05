@@ -1,13 +1,13 @@
 public class AVLTree extends BST {
 
     @Override
-    protected int height(Node root) {
+    protected int height(TreeNode root) {
         if (root == null) return 0;
         return root.height;
     }
 
     @Override
-    protected Node delete(Node root, int val) {
+    protected TreeNode delete(TreeNode root, int val) {
         if (root != null) {
             if (val < root.value) {
                 root.left = delete(root.left, val);
@@ -60,9 +60,9 @@ public class AVLTree extends BST {
     }
 
     @Override
-    protected Node insert(Node root, int value) {
+    protected TreeNode insert(TreeNode root, int value) {
         if (root == null) {
-            root = new Node(value);
+            root = new TreeNode(value);
             return root;
         }
         if (value < root.value) {
@@ -96,14 +96,14 @@ public class AVLTree extends BST {
         return root;
     }
 
-    private int getBalanceFactor(Node node) {
-        if (node == null) return 0;
-        return height(node.left) - height(node.right);
+    private int getBalanceFactor(TreeNode treeNode) {
+        if (treeNode == null) return 0;
+        return height(treeNode.left) - height(treeNode.right);
     }
 
-    private Node rightRotateNode(Node y) {
-        Node x = y.left;
-        Node B = x.right;
+    private TreeNode rightRotateNode(TreeNode y) {
+        TreeNode x = y.left;
+        TreeNode B = x.right;
 
         x.right = y;
         y.left = B;
@@ -114,9 +114,9 @@ public class AVLTree extends BST {
         return x;
     }
 
-    private Node leftRotateNode(Node y) {
-        Node x = y.right;
-        Node B = x.left;
+    private TreeNode leftRotateNode(TreeNode y) {
+        TreeNode x = y.right;
+        TreeNode B = x.left;
 
         x.left = y;
         y.right = B;

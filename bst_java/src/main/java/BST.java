@@ -1,23 +1,22 @@
-import java.util.HashSet;
 import java.util.Stack;
 
 public class BST {
-    private Node root;
+    private TreeNode root;
 
     public BST() {
     }
 
     public BST(int value) {
-        root = new Node(value);
+        root = new TreeNode(value);
     }
 
     public void insert(int value) {
         root = insert(root, value);
     }
 
-    protected Node insert(Node root, int value) {
+    protected TreeNode insert(TreeNode root, int value) {
         if (root == null) {
-            root = new Node(value);
+            root = new TreeNode(value);
             return root;
         }
         if (value < root.value) {
@@ -32,7 +31,7 @@ public class BST {
         return height(this.root);
     }
 
-    protected int height(Node root) {
+    protected int height(TreeNode root) {
         if (root != null) {
             return 1 + Math.max(height(root.left), height(root.right));
         }
@@ -40,8 +39,8 @@ public class BST {
     }
 
     public void inorderIterative() {
-        Stack<Node> stack = new Stack<>();
-        Node current = root;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode current = root;
 
         while (!stack.isEmpty() || current != null) {
             if (current != null) {
@@ -57,12 +56,12 @@ public class BST {
     }
 
     public void postorderIterative() {
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         Stack<Integer> output = new Stack<>();
 
         while (!stack.empty()) {
-            Node current = stack.pop();
+            TreeNode current = stack.pop();
             output.push(current.value);
 
             if (current.left != null)
@@ -78,12 +77,12 @@ public class BST {
     }
 
     public void preorderIterative() {
-        Node parent = root;
-        Stack<Node> stack = new Stack<>();
+        TreeNode parent = root;
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 
         while (!stack.isEmpty()) {
-            Node current = stack.pop();
+            TreeNode current = stack.pop();
             System.out.print(current.value + " ");
 
             if (current.right != null) {
@@ -111,7 +110,7 @@ public class BST {
         System.out.println();
     }
 
-    protected void preOrder(Node root) {
+    protected void preOrder(TreeNode root) {
         if (root != null) {
             visit(root);
             preOrder(root.left);
@@ -119,7 +118,7 @@ public class BST {
         }
     }
 
-    protected void inOrder(Node root) {
+    protected void inOrder(TreeNode root) {
         if (root != null) {
             inOrder(root.left);
             visit(root);
@@ -127,7 +126,7 @@ public class BST {
         }
     }
 
-    protected void postOrder(Node root) {
+    protected void postOrder(TreeNode root) {
         if (root != null) {
             postOrder(root.left);
             postOrder(root.right);
@@ -135,15 +134,15 @@ public class BST {
         }
     }
 
-    protected void visit(Node node) {
-        System.out.print(node.value + " ");
+    protected void visit(TreeNode treeNode) {
+        System.out.print(treeNode.value + " ");
     }
 
     public int size() {
         return size(root);
     }
 
-    protected int size(Node root) {
+    protected int size(TreeNode root) {
         if (root != null) {
             return 1 + size(root.left) + size(root.right);
         }
@@ -159,7 +158,7 @@ public class BST {
         return search(root, val);
     }
 
-    protected boolean search(Node root, int val) {
+    protected boolean search(TreeNode root, int val) {
         if (root != null) {
             if (root.value == val) return true;
             return search(root.left, val) || search(root.right, val);
@@ -168,12 +167,12 @@ public class BST {
     }
 
     public int minValue() {
-        Node minNode = minValue(root);
-        if (minNode == null) return Integer.MAX_VALUE;
-        return minNode.value;
+        TreeNode minTreeNode = minValue(root);
+        if (minTreeNode == null) return Integer.MAX_VALUE;
+        return minTreeNode.value;
     }
 
-    protected Node minValue(Node root) {
+    protected TreeNode minValue(TreeNode root) {
         if (root != null) {
             if (root.left == null) return root;
             else return minValue(root.left);
@@ -182,12 +181,12 @@ public class BST {
     }
 
     public int maxValue() {
-        Node maxNode = maxValue(root);
-        if (maxNode == null) return Integer.MIN_VALUE;
-        return maxNode.value;
+        TreeNode maxTreeNode = maxValue(root);
+        if (maxTreeNode == null) return Integer.MIN_VALUE;
+        return maxTreeNode.value;
     }
 
-    protected Node maxValue(Node root) {
+    protected TreeNode maxValue(TreeNode root) {
         if (root != null) {
             if (root.right == null) return root;
             else return maxValue(root.right);
@@ -202,7 +201,7 @@ public class BST {
         return true;
     }
 
-    protected boolean isBST(Node root, int lowerBound, int upperBound) {
+    protected boolean isBST(TreeNode root, int lowerBound, int upperBound) {
         if (root != null) {
             return root.value >= lowerBound && root.value <= upperBound
                     && isBST(root.left, lowerBound, root.value)
@@ -215,7 +214,7 @@ public class BST {
         root = delete(root, val);
     }
 
-    protected Node delete(Node root, int val) {
+    protected TreeNode delete(TreeNode root, int val) {
         if (root != null) {
             if (val < root.value) {
                 root.left = delete(root.left, val);
@@ -240,19 +239,19 @@ public class BST {
     }
 
     public int getSuccessor(int val) {
-        Node succ = getSuccessor(root, val);
+        TreeNode succ = getSuccessor(root, val);
         if (succ != null) return succ.value;
         return Integer.MIN_VALUE;
     }
 
-    protected Node getSuccessor(Node root, int val) {
+    protected TreeNode getSuccessor(TreeNode root, int val) {
         if (root == null) return root;
 
         if (root.right != null) {
             return minValue(root.right);
         }
 
-        Node successor = null;
+        TreeNode successor = null;
 
         while (root != null) {
             if (val < root.value) {
@@ -268,14 +267,14 @@ public class BST {
         return successor;
     }
 
-    public Node lowestCommonAncestor(int val1, int val2) {
+    public TreeNode lowestCommonAncestor(int val1, int val2) {
         if (search(val1) && search(val2)) {
             return lowestCommonAncestor(root, val1, val2);
         }
-        return new Node(-1);
+        return new TreeNode(-1);
     }
 
-    private Node lowestCommonAncestor(Node root, int val1, int val2) {
+    private TreeNode lowestCommonAncestor(TreeNode root, int val1, int val2) {
         if (val1 >= root.value) {
             return val2 <= root.value ? root : lowestCommonAncestor(root.right, val1, val2);
         } else {
@@ -283,9 +282,9 @@ public class BST {
         }
     }
 
-    public Node lowestCommonAncestorIterative(int val1, int val2) {
+    public TreeNode lowestCommonAncestorIterative(int val1, int val2) {
         if (search(val1) && search(val2)) {
-            Node runner = root;
+            TreeNode runner = root;
 
             while (runner != null) {
                 if (val1 >= runner.value) {
@@ -297,6 +296,6 @@ public class BST {
                 }
             }
         }
-        return new Node(-1);
+        return new TreeNode(-1);
     }
 }

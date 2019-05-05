@@ -5,29 +5,17 @@ public class Playground {
     public static void main(String[] args) {
         BST bst = new BST();
 
-        Node root = buildBST(new int[]{1, 2, 3, 4, 5, 6, 7  });
-
-        inorder(root);
-        System.out.println();
-
-        List<LinkedList<Node>> result = listOfDepths(root);
-
-        for (LinkedList<Node> l: result) {
-            for (Node n: l) {
-                System.out.print(n.value + " ");
-            }
-            System.out.println();
-        }
+        TreeNode root = buildBST(new int[]{3,1,4,2});
     }
 
-    public static Node heapifyBinaryTree(Node root) {
+    public static TreeNode heapifyBinaryTree(TreeNode root) {
         int size = traverse(root, 0, null);
-        Node[] nodeArray = new Node[size];
-        traverse(root, 0, nodeArray);
+        TreeNode[] treeNodeArray = new TreeNode[size];
+        traverse(root, 0, treeNodeArray);
 
-        Arrays.sort(nodeArray, new Comparator<Node>() {
+        Arrays.sort(treeNodeArray, new Comparator<TreeNode>() {
             @Override
-            public int compare(Node n1, Node n2) {
+            public int compare(TreeNode n1, TreeNode n2) {
                 int val1 = n1.value;
                 int val2 = n2.value;
 
@@ -39,13 +27,13 @@ public class Playground {
             int left = 2 * i + 1;
             int right = 2 * i + 2;
 
-            nodeArray[i].left = left > size ? null : nodeArray[left];
-            nodeArray[i].right = right > size ? null : nodeArray[right];
+            treeNodeArray[i].left = left > size ? null : treeNodeArray[left];
+            treeNodeArray[i].right = right > size ? null : treeNodeArray[right];
         }
-        return nodeArray[0]; // root node
+        return treeNodeArray[0]; // root node
     }
 
-    private static int traverse(Node root, int count, Node[] array) {
+    private static int traverse(TreeNode root, int count, TreeNode[] array) {
         if (root == null) {
             return count;
         }
@@ -58,42 +46,35 @@ public class Playground {
         return count;
     }
 
-    public static Node buildBST(int[] arr) {
+    public static TreeNode buildBST(int[] arr) {
         return buildBST(arr, 0, arr.length - 1);
     }
 
-    private static Node buildBST(int[] arr, int left, int right) {
+    private static TreeNode buildBST(int[] arr, int left, int right) {
         if (left <= right) {
             int middle = left + (right - left) / 2;
-            Node node = new Node(arr[middle]);
+            TreeNode treeNode = new TreeNode(arr[middle]);
 
-            node.left = buildBST(arr, left, middle - 1);
-            node.right = buildBST(arr, middle + 1, right);
+            treeNode.left = buildBST(arr, left, middle - 1);
+            treeNode.right = buildBST(arr, middle + 1, right);
 
-            return node;
+            return treeNode;
         }
         return null;
     }
 
-    public static void inorder(Node node) {
-        if (node == null) return;
-        inorder(node.left);
-        System.out.print(node.value + " ");
-        inorder(node.right);
-    }
-
-    public static List<LinkedList<Node>> listOfDepths(Node root) {
+    public static List<LinkedList<TreeNode>> listOfDepths(TreeNode root) {
         if (root == null) return Collections.emptyList();
 
-        List<LinkedList<Node>> listOfLists = new ArrayList<>();
+        List<LinkedList<TreeNode>> listOfLists = new ArrayList<>();
         int level = 0;
         listOfDepthsHelper(root, listOfLists, level);
         return listOfLists;
     }
 
-    private static void listOfDepthsHelper(Node root, List<LinkedList<Node>> listOfLists, int level) {
+    private static void listOfDepthsHelper(TreeNode root, List<LinkedList<TreeNode>> listOfLists, int level) {
         if (root == null) return;
-        LinkedList<Node> levelList;
+        LinkedList<TreeNode> levelList;
         try {
             levelList = listOfLists.get(level);
         } catch (IndexOutOfBoundsException e) {
@@ -104,5 +85,26 @@ public class Playground {
         levelList.add(root);
         listOfDepthsHelper(root.left, listOfLists, level + 1);
         listOfDepthsHelper(root.right, listOfLists, level + 1);
+    }
+
+    int kSmallest = Integer.MIN_VALUE;
+
+    public int kthSmallest(TreeNode root, int k) {
+        visit_inorder(root, k);
+        return kSmallest;
+    }
+
+    private void visit_inorder(TreeNode root, int k) {
+        if (root != null && k > 0) {
+            visit_inorder(root.left, k);
+            visit(root, k - 1);
+            visit_inorder(root.right, k - 1);
+        }
+    }
+
+    private void visit(TreeNode root, int k) {
+        if (k > 0) {
+            kSmallest = root.value;
+        }
     }
 }
